@@ -1,3 +1,5 @@
+require 'csv'
+
 class WordGuess
   def initialize(debug = false)
     # are we in debug mode?
