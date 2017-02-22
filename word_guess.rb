@@ -5,15 +5,23 @@ class WordGuess
     # are we in debug mode?
     @debug = debug
 
+    #OLD WORD SELECTION
     # possible words, selected at random
-    @words = {
-      "e" => %w(dog cat bug hat cap lit kin fan fin fun tan ten tin ton),
-      "m" => %w(plain claim brine crime alive bride skine drive slime stein jumpy),
-      "h" => %w(
-          machiavellian prestidigitation plenipotentiary quattuordecillion
-          magnanimous unencumbered bioluminescent circumlocution
-        )
-    }
+    # @words = {
+    #   "e" => %w(dog cat bug hat cap lit kin fan fin fun tan ten tin ton),
+    #   "m" => %w(plain claim brine crime alive bride skine drive slime stein jumpy),
+    #   "h" => %w(
+    #       machiavellian prestidigitation plenipotentiary quattuordecillion
+    #       magnanimous unencumbered bioluminescent circumlocution
+    #     )
+    # }
+
+    #NEW WORD SELECTION WITH csv
+    #Natalia's solution
+    @words = {}
+    CSV.read("words.csv").each do |line|
+      @words[line.first] = line[1..-1]
+    end
 
     # players attempts allowed by difficulty
     @tries = {
